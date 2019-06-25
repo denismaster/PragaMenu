@@ -14,5 +14,4 @@ deploy:
   provider: firebase
   only:
     - master
-  token:
-    FIREBASE_TOKEN
+  token: $FIREBASE_TOKEN
