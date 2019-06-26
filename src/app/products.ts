@@ -37,10 +37,16 @@ export const MENU: ProductCategory[] = [
                 price: 150
             },
             {
-                name: "Окрошка",
+                name: "Окрошка на кефире",
                 weight: 300,
                 price: 120
-            }
+            },
+            {
+                name: "Окрошка на квасе",
+                weight: 300,
+                price: 120
+            },
+            
         ]
     },
     {
@@ -102,20 +108,38 @@ export const MENU: ProductCategory[] = [
         name: "Салаты",
         products: [
             {
-                name: "Салат с молодой капустой",
-                additionalInformation: "Заправляется сметаной или растительным маслом",
+                name: "Салат с молодой капустой(сметана)",
+                additionalInformation: "Заправляется сметаной",
                 weight: 200,
                 price: 105
             },
             {
-                name: "Овощной салат",
-                additionalInformation: "Заправляется сметаной или растительным маслом",
+                name: "Салат с молодой капустой(масло)",
+                additionalInformation: "Заправляется растительным маслом",
                 weight: 200,
                 price: 105
             },
             {
-                name: "Салат с кижучем собственного копчения",
-                additionalInformation: "Заправка тар-тар или цитрусовая",
+                name: "Овощной салат(сметана)",
+                additionalInformation: "Заправляется сметаной",
+                weight: 200,
+                price: 105
+            },
+            {
+                name: "Овощной салат(масло)",
+                additionalInformation: "Заправляется растительным маслом",
+                weight: 200,
+                price: 105
+            },
+            {
+                name: "Салат с кижучем собственного копчения(тар-тар)",
+                additionalInformation: "Заправка с соусом тар-тар или цитрусовая",
+                weight: 150,
+                price: 160
+            },
+            {
+                name: "Салат с кижучем собственного копчения(цитрус)",
+                additionalInformation: "Заправка с цитрусом",
                 weight: 150,
                 price: 160
             },
