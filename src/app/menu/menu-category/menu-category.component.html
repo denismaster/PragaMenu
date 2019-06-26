@@ -1,0 +1,8 @@
+<div class="card" *ngIf="category">
+    <div class="card-body">
+        <h4 class="card-title  text-uppercase">{{category.name}}</h4>
+    </div>
+    <div class="list-group">
+        <app-menu-category-item (click)="handleItemClick($event)" [product]="product" *ngFor="let product of category.products"></app-menu-category-item>
+    </div>
+</div>
