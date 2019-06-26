@@ -16,7 +16,10 @@ export class MenuCategoryItemComponent {
 
   handleClick() {
     event.stopPropagation();
-    this.amount = 1;
+    if (this.amount < 1) {
+      this.emitAction("add");
+      this.amount = 1;
+    } 
   }
 
   private emitAction(action: "add" | "remove") {
