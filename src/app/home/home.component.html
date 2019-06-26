@@ -1,2 +1,23 @@
-<h3>Меню</h3>
-<app-menu [menu]="menu"></app-menu>
+<div class="card" *ngIf="order$">
+  <div class="card-body">
+    <div  *ngFor="let category of dishCategories">
+      <strong>{{category}}:</strong>
+      <span *ngFor="let dish of categorizedDishes[category]">
+        <span *ngIf="dish.amount>1">
+          {{dish.name}} x {{dish.amount}}
+        </span>
+        <span *ngIf="dish.amount==1">
+          {{dish.name}}
+        </span>
+      </span>
+    </div>
+    <div>
+        <strong>Итоговая цена: {{ totalPrice}} ₽</strong>
+    </div>
+  </div>
+</div>
+
+<app-menu *ngIf="order$" [menu]="menu" (select)="updateOrder($event)"></app-menu>
+<div *ngIf="!order$">
+  Загрузка....
+</div>
