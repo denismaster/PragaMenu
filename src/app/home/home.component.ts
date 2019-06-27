@@ -28,12 +28,15 @@ export class HomeComponent {
     if (!order) {
       const generatedId  = uuid();
       this.orderId = generatedId;
+      sessionStorage.setItem('current_order', this.orderId)
       this.afs.collection("orders").doc<Order>(generatedId).set({ dishes: [] }).then(_=>{
         router.navigate(['/'], { queryParams: { 'order': generatedId } });
       })
+      return;
     }
 
     this.orderId = order;
+    sessionStorage.setItem('current_order', this.orderId)
   }
 
   ngOnInit() {
