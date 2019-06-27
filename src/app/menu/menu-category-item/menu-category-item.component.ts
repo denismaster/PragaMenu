@@ -31,9 +31,9 @@ export class MenuCategoryItemComponent {
 
   handleClick() {
     event.stopPropagation();
-    if (this.amount < 1) {
-      this.emitAction("add");
+    if (this.amount < 1) { 
       this.amount = 1;
+      this.emitAction("add");
     }
   }
 
