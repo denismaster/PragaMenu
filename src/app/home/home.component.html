@@ -1,6 +1,11 @@
 <div class="card mb-3" *ngIf="order$">
   <div class="card-body">
-    <div  *ngFor="let category of dishCategories">
+    <div>
+      <button class="btn btn-info" (click)="clearOrder()">
+        Очистить
+      </button>
+    </div>
+    <div *ngFor="let category of dishCategories">
       <strong>{{category}}:</strong>
       <span *ngFor="let dish of categorizedDishes[category]">
         <span *ngIf="dish.amount>1">
@@ -12,7 +17,7 @@
       </span>
     </div>
     <div>
-        <strong>Итоговая цена: {{ totalPrice}} ₽</strong>
+      <strong>Итоговая цена: {{ totalPrice}} ₽</strong>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { filter } from 'rxjs/operators'
 import * as firebase from 'firebase';
+import { OrderService } from '../order.service';
 
 export interface OrderItem { id:string, name: string; category: string, price: number }
 export interface Order { dishes: OrderItem[] }
@@ -22,7 +23,7 @@ export class HomeComponent {
 
   dishes: OrderItem[] = [];
 
-  constructor(activatedRoute: ActivatedRoute, router: Router, private afs: AngularFirestore) {
+  constructor(activatedRoute: ActivatedRoute, router: Router, private afs: AngularFirestore,private orderService:OrderService) {
     const order = activatedRoute.snapshot.queryParams.order;
 
     if (!order) {
@@ -31,6 +32,9 @@ export class HomeComponent {
       sessionStorage.setItem('current_order', this.orderId)
       this.afs.collection("orders").doc<Order>(generatedId).set({ dishes: [] }).then(_=>{
         router.navigate(['/'], { queryParams: { 'order': generatedId } });
+      })
+      .catch(err=>{
+        alert(err);
       })
       return;
     }
@@ -107,5 +111,11 @@ export class HomeComponent {
         })
       })
     }
+  }
+
+  clearOrder(update: OrderUpdate) {
+    this.afs.doc<Order>(`orders/${this.orderId}`).update({
+      dishes: [] })
+    this.orderService.clearOrder();
   }
 }

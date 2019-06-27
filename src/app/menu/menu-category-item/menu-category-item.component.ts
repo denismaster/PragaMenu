@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product, OrderUpdate } from 'src/app/products';
 import { ActivatedRoute } from '@angular/router';
+import { OrderService } from 'src/app/order.service';
 
 @Component({
   selector: 'app-menu-category-item',
@@ -16,8 +17,11 @@ export class MenuCategoryItemComponent {
   amount: number = 0;
   orderId:string;
 
-  constructor() {
-    
+  constructor(private orderService: OrderService) {
+    this.orderService.clearOrder$.subscribe(()=>{
+      this.amount=0;
+      sessionStorage.removeItem(`${this.orderId}-${this.product.name}`)
+    })
   }
 
   ngOnInit(){
