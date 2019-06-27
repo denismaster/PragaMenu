@@ -48,6 +48,9 @@ export class HomeComponent {
     this.order$ = orderDoc.valueChanges();
     this.order$.pipe(filter(order => !!order)).subscribe(order => {
       this.dishes = order.dishes;
+      if(order.dishes&&!order.dishes.length){
+        this.orderService.clearOrder();
+      }
     })
   }
 
@@ -116,6 +119,6 @@ export class HomeComponent {
   clearOrder(update: OrderUpdate) {
     this.afs.doc<Order>(`orders/${this.orderId}`).update({
       dishes: [] })
-    this.orderService.clearOrder();
+      this.orderService.clearOrder();
   }
 }
